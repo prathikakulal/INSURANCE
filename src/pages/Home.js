@@ -12,6 +12,7 @@ import OPD from '../assets/OPD.png';
 import cancer from '../assets/cancer_insurance.png';
 import WhyChooseUs from './WhyChooseUs'; 
 import PBAdvantage from './PBAdvantage';
+import TestimonialsCarousel from './TestimonialsCarousel';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -179,6 +180,7 @@ const Home = () => {
       <button className="view-all-btn">View all products</button>
       <WhyChooseUs />
       <PBAdvantage />
+      <TestimonialsCarousel />
 
      
       {/* Also Buy Section */}

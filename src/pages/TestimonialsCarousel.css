@@ -1,0 +1,102 @@
+.testimonial-section {
+    width: 100%;
+    max-width: 1500px;
+    min-height: 700px;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f9fbff;
+  }
+  
+  .testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .testimonial-header h2 {
+    font-size: 28px;
+    text-align: left;
+    color: #1d2a4d;
+    border-bottom: 3px solid #2b55fb;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  .nav-arrows button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    margin: 0 8px;
+    cursor: pointer;
+    color: #2b55fb;
+  }
+  
+  .testimonial-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+  
+  .testimonial-card {
+    background-color: white;
+    padding: 100px;
+    width: 280px;
+    font-size: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .testimonial-card h4 {
+    color: #1d2a4d;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-card .quote-icon {
+    font-size: 70px;
+    color: #2b55fb;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-card p {
+    font-size: 25px;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .dots-container {
+    margin-top: 20px;
+  }
+  
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .dot.active {
+    background-color: #2b55fb;
+  }
+  
+  .testimonial-section h2 {
+    font-size: 36px; /* Try 40px or more if you want it even bigger */
+    font-weight: bold;
+    color: #1a1a1a; /* Dark text for better readability */
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+  
