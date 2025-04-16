@@ -1,0 +1,68 @@
+.pb-advantage {
+    padding: 50px 80px;
+    background-color: white;
+  }
+  
+  .pb-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f2b50;
+  }
+  
+  .pb-underline {
+    width: 60px;
+    height: 4px;
+    background-color: #3e75ff;
+    margin: 10px 0 20px;
+  }
+  
+  .pb-description {
+    font-size: 16px;
+    color: #344054;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    max-width: 800px;
+  }
+  
+  .pb-link {
+    color: #1f5eff;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+  
+  .pb-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .pb-card {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .pb-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+  
+  .pb-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2b50;
+    margin-bottom: 6px;
+  }
+  
+  .pb-card-subtitle {
+    font-size: 14px;
+    color: #666;
+  }
+  
