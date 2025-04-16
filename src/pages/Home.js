@@ -13,6 +13,9 @@ import cancer from '../assets/cancer_insurance.png';
 import WhyChooseUs from './WhyChooseUs'; 
 import PBAdvantage from './PBAdvantage';
 import TestimonialsCarousel from './TestimonialsCarousel';
+import SupportSection from './SupportSection';
+import Footer from '../components/Footer';
+
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -181,6 +184,7 @@ const Home = () => {
       <WhyChooseUs />
       <PBAdvantage />
       <TestimonialsCarousel />
+      <SupportSection />
 
      
       {/* Also Buy Section */}
@@ -210,7 +214,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
+    
   );
 };
 
