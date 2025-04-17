@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import term from '../assets/term.png';
@@ -15,10 +13,12 @@ import PBAdvantage from './PBAdvantage';
 import TestimonialsCarousel from './TestimonialsCarousel';
 import SupportSection from './SupportSection';
 import Footer from '../components/Footer';
-
+import Login from './Login';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showLogin, setShowLogin] = useState(false);
+  
   const slides = [
     {
       title: "Term Life Insurance",
@@ -44,8 +44,30 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  const handleSignInClick = () => {
+    setShowLogin(true);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+  };
+
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
+
   return (
     <div className="policybazaar-container">
+      {/* Login Modal */}
+      {showLogin && (
+        <div className="login-modal-overlay" onClick={handleCloseLogin}>
+          <div className="login-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-login-btn" onClick={handleCloseLogin}>
+              &times;
+            </button>
+            <Login onClose={handleCloseLogin} />
+          </div>
+        </div>
+      )}
+
       {/* Top Navigation Bar */}
       <div className="top-nav">
         <div className="logo">policybazaar</div>
@@ -55,7 +77,7 @@ const Home = () => {
           <span className="nav-item">Claim <span className="checkmark">✔</span></span>
           <span className="nav-item">Support <span className="checkmark">✔</span></span>
           <span className="nav-item">Talk to Expert</span>
-          <button className="sign-in-btn">Sign in</button>
+          <button className="sign-in-btn" onClick={handleSignInClick}>Sign in</button>
         </div>
       </div>
 
@@ -100,84 +122,76 @@ const Home = () => {
       {/* Insurance Categories */}
       <div className="insurance-categories">
         <div className="category">
-        {/* <img src={term} alt="term" className="icon" />
-        Term Life Insurance</div> */}
-        <div className="card-box">
-          <div className="label">Term Life Insurance</div>
-          <div className="icon-container">
-            <img src={term} alt="Term Life Insurance" className="icon" />
+          <div className="card-box">
+            <div className="label">Term Life Insurance</div>
+            <div className="icon-container">
+              <img src={term} alt="Term Life Insurance" className="icon" />
+            </div>
           </div>
-          </div>
-    
-      </div>
+        </div>
 
-
-        {/* <div className="category">Health Insurance</div> */}
-            <div className="category">
-            <div className="card-box">
+        <div className="category">
+          <div className="card-box">
             <div className="label">Health Insurance</div>
-              <div className="icon-container">
-                <img src={healthcare} alt="Health Insurance" className="icon" />
-              </div>
+            <div className="icon-container">
+              <img src={healthcare} alt="Health Insurance" className="icon" />
             </div>
-            </div>
+          </div>
+        </div>
 
-
-            <div className="category">
-            <div className="card-box">
+        <div className="category">
+          <div className="card-box">
             <div className="label">Family Health Insurance</div>
-              <div className="icon-container">
-                <img src={family} alt="Family Health Insurance" className="icon" />
-              </div>
+            <div className="icon-container">
+              <img src={family} alt="Family Health Insurance" className="icon" />
             </div>
-            </div>
+          </div>
+        </div>
 
-
-            <div className="category">
-            <div className="card-box">
+        <div className="category">
+          <div className="card-box">
             <div className="label">Personal Accident</div>
-              <div className="icon-container">
-                <img src={compensation} alt="Personal Accident" className="icon" />
-              </div>
+            <div className="icon-container">
+              <img src={compensation} alt="Personal Accident" className="icon" />
             </div>
-            </div>
+          </div>
+        </div>
 
-            <div className="category">
-            <div className="card-box">
+        <div className="category">
+          <div className="card-box">
             <div className="label">Aarogya Sanjeevini</div>
-              <div className="icon-container">
-                <img src={aarogya} alt="Day 1 Coverage" className="icon" />
-              </div>
+            <div className="icon-container">
+              <img src={aarogya} alt="Day 1 Coverage" className="icon" />
             </div>
-            </div>
+          </div>
+        </div>
 
-            <div className="category">
-            <div className="card-box">
+        <div className="category">
+          <div className="card-box">
             <div className="label">1 Cr Health Cover</div>
-              <div className="icon-container">
-                <img src={healthcareinsurance} alt="1 Cr Health Insurance" className="icon" />
-              </div>
+            <div className="icon-container">
+              <img src={healthcareinsurance} alt="1 Cr Health Insurance" className="icon" />
             </div>
-            </div>
-            
+          </div>
+        </div>
 
-            <div className="category">
-            <div className="card-box">
+        <div className="category">
+          <div className="card-box">
             <div className="label">OPD</div>
-              <div className="icon-container">
-                <img src={OPD} alt="OPD" className="icon" />
-              </div>
+            <div className="icon-container">
+              <img src={OPD} alt="OPD" className="icon" />
             </div>
-            </div>
+          </div>
+        </div>
 
-            <div className="category">
-            <div className="card-box">
+        <div className="category">
+          <div className="card-box">
             <div className="label">Cancer Insurance</div>
-              <div className="icon-container">
-                <img src={cancer} alt="Cancer Insurance" className="icon" />
-              </div>
+            <div className="icon-container">
+              <img src={cancer} alt="Cancer Insurance" className="icon" />
             </div>
-            </div>
+          </div>
+        </div>
       </div>
 
       <button className="view-all-btn">View all products</button>
@@ -186,7 +200,6 @@ const Home = () => {
       <TestimonialsCarousel />
       <SupportSection />
 
-     
       {/* Also Buy Section */}
       <div className="also-buy-section">
         <h3>ALSO BUY</h3>
@@ -216,7 +229,6 @@ const Home = () => {
       </div>
       <Footer/>
     </div>
-    
   );
 };
 
