@@ -1,4 +1,4 @@
-/* 
+
 
    
 * {
@@ -219,17 +219,17 @@
     .login-card {
       padding: 30px 20px;
     }
-  } */
+  }
 
   /* Base Styles */
-* {
+/* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
   }
   
-  /* Page Background with Plane Image */
+  
   .login-page {
     background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
     background-size: cover;
@@ -260,7 +260,7 @@
     z-index: 1;
   }
   
-  /* Card Styles */
+  
   .login-card {
     background: white;
     border-radius: 15px;
@@ -269,7 +269,7 @@
     text-align: center;
   }
   
-  /* Logo Styles */
+  
   .logo-container {
     margin-bottom: 25px;
   }
@@ -294,7 +294,7 @@
     color: #333;
   }
   
-  /* Welcome Text */
+
   .welcome-text h2 {
     color: #333;
     margin-bottom: 10px;
@@ -308,7 +308,7 @@
     line-height: 1.5;
   }
   
-  /* Tabs */
+ 
   .tabs {
     display: flex;
     margin-bottom: 25px;
@@ -342,7 +342,7 @@
     background: #4CAF50;
   }
   
-  /* Form Styles */
+
   .input-group {
     position: relative;
     margin-bottom: 20px;
@@ -370,7 +370,7 @@
     border-color: #4CAF50;
   }
   
-  /* Form Options */
+ 
   .form-options {
     display: flex;
     justify-content: space-between;
@@ -401,7 +401,7 @@
     color: #3d8b40;
   }
   
-  /* Button */
+
   .login-button {
     width: 100%;
     padding: 14px;
@@ -427,7 +427,7 @@
     margin-right: 8px;
   }
   
-  /* Footer */
+  
   .footer {
     margin-bottom: 20px;
     font-size: 12px;
@@ -446,7 +446,7 @@
     text-decoration: underline;
   }
   
-  /* Tags */
+ 
   .tags {
     display: flex;
     justify-content: center;
@@ -467,7 +467,7 @@
     background-color: #e0e0e0;
   }
   
-  /* Responsive */
+  
   @media (max-width: 480px) {
     .login-card {
       padding: 30px 20px;
@@ -484,4 +484,4 @@
     .tags {
       gap: 8px;
     }
-  }
+  } */
