@@ -33,6 +33,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import PatientView from './pages/PatientView';
 import DoctorView from './pages/DoctorView';
+import InsuranceForm from './pages/InsuranceForm';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/patient" element={<PatientView />} />
         <Route path="/doctor" element={<DoctorView />} />
+        <Route path="/insurance-form" element={<InsuranceForm />} />
       </Routes>
     </Router>
   );

@@ -14,10 +14,14 @@ import TestimonialsCarousel from './TestimonialsCarousel';
 import SupportSection from './SupportSection';
 import Footer from '../components/Footer';
 import Login from './Login';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
+
   
   const slides = [
     {
@@ -121,14 +125,15 @@ const Home = () => {
 
       {/* Insurance Categories */}
       <div className="insurance-categories">
-        <div className="category">
-          <div className="card-box">
-            <div className="label">Term Life Insurance</div>
-            <div className="icon-container">
-              <img src={term} alt="Term Life Insurance" className="icon" />
-            </div>
-          </div>
-        </div>
+  <div className="category" onClick={() => navigate('/insurance-form')}>
+    <div className="card-box">
+      <div className="label">Term Life Insurance</div>
+      <div className="icon-container">
+        <img src={term} alt="Term Life Insurance" className="icon" />
+      </div>
+    </div>
+  </div>
+
 
         <div className="category">
           <div className="card-box">
