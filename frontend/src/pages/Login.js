@@ -2,34 +2,123 @@
 
 
 import React, { useState } from 'react';
+import { ethers } from 'ethers';
+import AuthABI from '../contracts/AuthContract.json'; // This is the ABI array directly
 import './Login.css';
-import { generateHash } from '../utils/hash'; // ✅ Your hash function
+import { generateHash } from '../utils/hash';
+
+const CONTRACT_ADDRESS = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
 
 function Login() {
   const [activeTab, setActiveTab] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const hash = await generateHash(email, password);
+    setLoading(true);
+    setMessage('');
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/${activeTab}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, hash }),
-        }
-      );
+      if (!window.ethereum) {
+        throw new Error('MetaMask is not installed! Please install MetaMask to continue.');
+      }
 
-      const data = await response.json();
-      setMessage(data.message || 'Success');
+      // Ensure MetaMask is connected
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      if (!accounts || accounts.length === 0) {
+        throw new Error('MetaMask is not connected. Please connect your wallet.');
+      }
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+
+      // Check network
+      const network = await provider.getNetwork();
+      let contract;
+      if (Number(network.chainId) !== 1) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x1' }],
+          });
+        } catch (switchError) {
+          if (switchError.code === 4902 || switchError.message.includes('Unrecognized chain ID')) {
+            try {
+              await window.ethereum.request({
+                method: 'wallet_addEthereumChain',
+                params: [
+                  {
+                    chainId: '0x1',
+                    chainName: 'Ethereum Mainnet',
+                    rpcUrls: ['https://mainnet.infura.io/v3/bf9531dea07e4c8d8f280ec62b10db93'],
+                    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+                    blockExplorerUrls: ['https://etherscan.io'],
+                  },
+                ],
+              });
+            } catch (addError) {
+              throw new Error('Failed to add Ethereum Mainnet. Please add it manually in MetaMask.');
+            }
+          } else if (switchError.code === 4001) {
+            throw new Error('Network switch canceled. Please switch to Ethereum Mainnet manually in MetaMask.');
+          } else {
+            throw new Error(`Failed to switch to Ethereum Mainnet: ${switchError.message}. Please switch manually in MetaMask.`);
+          }
+        }
+
+        // Refresh provider after network switch
+        const updatedProvider = new ethers.BrowserProvider(window.ethereum);
+        const updatedSigner = await updatedProvider.getSigner();
+
+        // Debug ABI
+        console.log('AuthABI:', AuthABI);
+
+        // Check if AuthABI is an array
+        if (!Array.isArray(AuthABI)) {
+          throw new Error('AuthABI is not an array. Check the AuthContract.json file.');
+        }
+
+        contract = new ethers.Contract(CONTRACT_ADDRESS, AuthABI, updatedSigner); // Use AuthABI directly
+      } else {
+        // Debug ABI
+        console.log('AuthABI:', AuthABI);
+
+        // Check if AuthABI is an array
+        if (!Array.isArray(AuthABI)) {
+          throw new Error('AuthABI is not an array. Check the AuthContract.json file.');
+        }
+
+        contract = new ethers.Contract(CONTRACT_ADDRESS, AuthABI, signer); // Use AuthABI directly
+      }
+
+      if (!contract) {
+        throw new Error('Failed to initialize contract. Check ABI and contract address.');
+      }
+
+      console.log('Email:', email);
+      console.log('Generated hash:', hash);
+
+      if (activeTab === 'register') {
+        const tx = await contract.register(email, hash, { gasLimit: 300000 });
+        await tx.wait();
+        setMessage('✅ Successfully registered on the blockchain!');
+      } else if (activeTab === 'login') {
+        const loginSuccess = await contract.login(email, hash);
+        if (loginSuccess) {
+          setMessage('✅ Login successful!');
+        } else {
+          setMessage('❌ Invalid email or password!');
+        }
+      }
     } catch (error) {
-      console.error('Failed to fetch:', error);
-      setMessage('Something went wrong. Please try again.');
+      console.error('Contract interaction error:', error);
+      setMessage(`❗ Error: ${error.message}. Check MetaMask & console.`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -87,15 +176,23 @@ function Login() {
             </label>
           </div>
 
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button" disabled={loading}>
             <span className="button-icon">🔓</span>
-            {activeTab === 'login' ? 'Login' : 'Create account'}
+            {loading ? 'Processing...' : activeTab === 'login' ? 'Login' : 'Create account'}
           </button>
         </form>
 
-        <p style={{ textAlign: 'center', color: 'green', marginTop: '10px' }}>
-          {message}
-        </p>
+        {message && (
+          <p
+            style={{
+              textAlign: 'center',
+              color: message.includes('✅') ? 'green' : 'red',
+              marginTop: '10px',
+            }}
+          >
+            {message}
+          </p>
+        )}
 
         <div className="footer">
           <p>
