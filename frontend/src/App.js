@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import PatientView from './pages/PatientView';
 import DoctorView from './pages/DoctorView';
 import InsuranceForm from './pages/InsuranceForm';
+import InsuranceSelection from './pages/InsuranceSelection';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/patient" element={<PatientView />} />
         <Route path="/doctor" element={<DoctorView />} />
         <Route path="/insurance-form" element={<InsuranceForm />} />
+        <Route path="/insurance-selection" element={<InsuranceSelection />} />
       </Routes>
     </Router>
   );
