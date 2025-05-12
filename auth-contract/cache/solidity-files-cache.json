@@ -2,11 +2,11 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\Prathika\\OneDrive\\Desktop\\health\\healthcare-platform\\auth-contract\\contracts\\AuthContract.sol": {
-      "lastModificationDate": 1746790935176,
-      "contentHash": "c5674598ccbe30ada7cd5dc9fe5bd884",
+      "lastModificationDate": 1746859541771,
+      "contentHash": "e637b75ccaf55e85b1899b1ce7333b73",
       "sourceName": "contracts/AuthContract.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -31,18 +31,18 @@
       },
       "imports": [],
       "versionPragmas": [
-        "^0.8.0"
+        "^0.8.20"
       ],
       "artifacts": [
         "AuthContract"
       ]
     },
     "C:\\Users\\Prathika\\OneDrive\\Desktop\\health\\healthcare-platform\\auth-contract\\contracts\\Lock.sol": {
-      "lastModificationDate": 1746790478140,
-      "contentHash": "7eee587c347fe6b1de50c96688cb9477",
+      "lastModificationDate": 1746859098898,
+      "contentHash": "95492a003d4a6703de9ce15c54470ac0",
       "sourceName": "contracts/Lock.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -67,7 +67,7 @@
       },
       "imports": [],
       "versionPragmas": [
-        "^0.8.28"
+        "^0.8.20"
       ],
       "artifacts": [
         "Lock"
