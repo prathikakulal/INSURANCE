@@ -8,6 +8,7 @@ import PatientView from './pages/PatientView';
 import DoctorView from './pages/DoctorView';
 import InsuranceForm from './pages/InsuranceForm';
 import InsuranceSelection from './pages/InsuranceSelection';
+import SelectCity from './pages/CitySelectionPB';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/doctor" element={<DoctorView />} />
         <Route path="/insurance-form" element={<InsuranceForm />} />
         <Route path="/insurance-selection" element={<InsuranceSelection />} />
+        <Route path="/select-city" element={<SelectCity />} />
       </Routes>
     </Router>
   );

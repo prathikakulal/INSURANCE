@@ -1,0 +1,149 @@
+/* All classes prefixed with pb-age-selection- to prevent style leakage */
+.pb-age-selection-container {
+  font-family: "Segoe UI", Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+}
+
+.pb-age-selection-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.pb-age-selection-back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #666;
+}
+
+.pb-age-selection-progress-container {
+  flex: 1;
+}
+
+.pb-age-selection-progress-bar {
+  height: 5px;
+  width: 25%;
+  background-color: #f68b1e;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.pb-age-selection-progress-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.pb-age-selection-content {
+  display: flex;
+  gap: 40px;
+}
+
+.pb-age-selection-form-container {
+  flex: 2;
+}
+
+.pb-age-selection-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.pb-age-selection-input-group {
+  margin-bottom: 25px;
+}
+
+.pb-age-selection-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.pb-age-selection-select {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pb-age-selection-continue-button {
+  background-color: #f68b1e;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.pb-age-selection-side-panel {
+  flex: 1;
+}
+
+.pb-age-selection-info-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+.pb-age-selection-info-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.pb-age-selection-info-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.pb-age-selection-footer {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.pb-age-selection-footer-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.pb-age-selection-stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.pb-age-selection-stat-item {
+  min-width: 120px;
+}
+
+.pb-age-selection-stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f68b1e;
+  margin-bottom: 5px;
+}
+
+.pb-age-selection-stat-label {
+  font-size: 14px;
+  color: #666;
+}

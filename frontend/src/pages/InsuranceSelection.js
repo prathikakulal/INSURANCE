@@ -1,207 +1,162 @@
-// // import React, { useState } from 'react';
-// // import './InsuranceSelection.css';
-
-// // const membersList = [
-// //   { id: 'self', label: 'Self' },
-// //   { id: 'wife', label: 'Wife' },
-// //   { id: 'son', label: 'Son', quantity: true },
-// //   { id: 'daughter', label: 'Daughter', quantity: true },
-// //   { id: 'father', label: 'Father' },
-// //   { id: 'mother', label: 'Mother' }
-// // ];
-
-// // const InsuranceSelection = () => {
-// //   const [gender, setGender] = useState('male');
-// //   const [selectedMembers, setSelectedMembers] = useState({});
-  
-// //   const toggleMember = (id) => {
-// //     setSelectedMembers(prev => ({
-// //       ...prev,
-// //       [id]: prev[id] ? undefined : membersList.find(m => m.id === id).quantity ? 1 : true
-// //     }));
-// //   };
-
-// //   const adjustQuantity = (id, delta) => {
-// //     setSelectedMembers(prev => {
-// //       const count = prev[id] || 1;
-// //       const newCount = Math.max(1, count + delta);
-// //       return { ...prev, [id]: newCount };
-// //     });
-// //   };
-
-// //   return (
-// //     <div class="insurance-selection-page">
-// //   <header>
-// //     <div class="logo">policybazaar<span>.com</span></div>
-// //     <div class="tagline">HAR FAMILY HOGI INSURED</div>
-// //     <button class="help-btn">📞 Help</button>
-// //   </header>
-
-// //   <div class="progress-bar">
-// //     <div class="progress" style="width: 0%;"></div>
-// //   </div>
-
-// //   <main>
-// //     <h1>
-// //       Find top plans for you with up to <span class="highlight">25% discount</span>
-// //     </h1>
-
-// //     <div class="gender-toggle">
-// //       <button class="active">Male</button>
-// //       <button>Female</button>
-// //     </div>
-
-// //     <h3>Select members you want to insure</h3>
-
-// //     <div class="members-grid">
-// //       <div class="member-card selected">
-// //         <div class="avatar"></div>
-// //         <div>Self</div>
-// //       </div>
-// //       <div class="member-card">
-// //         <div class="avatar"></div>
-// //         <div>Wife</div>
-// //       </div>
-// //       <div class="member-card selected">
-// //         <div class="avatar"></div>
-// //         <div>Son</div>
-// //         <div class="quantity-control">
-// //           <button>-</button>
-// //           <span>1</span>
-// //           <button>+</button>
-// //         </div>
-// //       </div>
-// //       <div class="member-card">
-// //         <div class="avatar"></div>
-// //         <div>Daughter</div>
-// //       </div>
-// //       <div class="member-card">
-// //         <div class="avatar"></div>
-// //         <div>Father</div>
-// //       </div>
-// //       <div class="member-card">
-// //         <div class="avatar"></div>
-// //         <div>Mother</div>
-// //       </div>
-// //     </div>
-
-// //     <div class="more-members">More members ⌄</div>
-
-// //     <button class="continue-btn">Continue ›</button>
-
-// //     <div class="footer-text">
-// //       By clicking on "Continue", you agree to our
-// //       <a href="#">Privacy Policy</a>,
-// //       <a href="#">Terms of Use</a> & 
-// //       <a href="#">*Disclaimer</a>
-// //     </div>
-// //   </main>
-// // </div>
-// //   );
-// // };
-
-// // export default InsuranceSelection;
-
-
 
 // import React, { useState } from 'react';
 // import './InsuranceSelection.css';
 
-// const membersList = [
-//   { id: 'self', label: 'Self' },
-//   { id: 'wife', label: 'Wife' },
-//   { id: 'son', label: 'Son', quantity: true },
-//   { id: 'daughter', label: 'Daughter', quantity: true },
-//   { id: 'father', label: 'Father' },
-//   { id: 'mother', label: 'Mother' }
-// ];
-
 // const InsuranceSelection = () => {
-//   const [gender, setGender] = useState('male');
-//   const [selectedMembers, setSelectedMembers] = useState({});
+//   const [selectedGender, setSelectedGender] = useState(null);
+//   const [selectedMembers, setSelectedMembers] = useState([]);
+//   const [showAllMembers, setShowAllMembers] = useState(false);
+//   const [childrenCount, setChildrenCount] = useState({
+//     son: 1,
+//     daughter: 1
+//   });
 
-//   const toggleMember = (id) => {
-//     setSelectedMembers(prev => ({
+//   const handleGenderSelect = (gender) => {
+//     setSelectedGender(gender);
+//   };
+
+//   const handleMemberSelect = (member) => {
+//     if (selectedMembers.includes(member)) {
+//       setSelectedMembers(selectedMembers.filter(m => m !== member));
+//     } else {
+//       setSelectedMembers([...selectedMembers, member]);
+//     }
+//   };
+
+//   const handleChildCountChange = (childType, increment) => {
+//     setChildrenCount(prev => ({
 //       ...prev,
-//       [id]: prev[id] ? undefined : membersList.find(m => m.id === id).quantity ? 1 : true
+//       [childType]: Math.max(1, prev[childType] + (increment ? 1 : -1))
 //     }));
 //   };
 
-//   const adjustQuantity = (id, delta) => {
-//     setSelectedMembers(prev => {
-//       const count = prev[id] || 1;
-//       const newCount = Math.max(1, count + delta);
-//       return { ...prev, [id]: newCount };
-//     });
+//   const toggleShowAllMembers = () => {
+//     setShowAllMembers(!showAllMembers);
 //   };
 
+//   const getAvatar = (member) => {
+//     const avatars = {
+//       self: '👤',
+//       wife: '👩',
+//       son: '👦',
+//       daughter: '👧',
+//       father: '👴',
+//       mother: '👵',
+//       grandfather: '👴',
+//       grandmother: '👵',
+//       'father-in-law': '👴',
+//       'mother-in-law': '👵'
+//     };
+//     return avatars[member.toLowerCase()] || '👤';
+//   };
+
+//   const basicMembers = ['Self', 'Wife', 'Son', 'Daughter', 'Father', 'Mother'];
+//   const additionalMembers = ['Grandfather', 'Grandmother', 'Father-in-law', 'Mother-in-law'];
+//   const allMembers = [...basicMembers, ...additionalMembers];
+
 //   return (
-//     <div className="insurance-selection-page">
-//       <header>
-//         <div className="logo">policybazaar<span>.com</span></div>
-//         <div className="tagline">HAR FAMILY HOGI INSURED</div>
-//         <button className="help-btn">📞 Help</button>
+//     <div className="insurance-selection">
+//       <header className="insurance-selection-header">
+//         <div className="insurance-selection-logo-container">
+//           <div className="insurance-selection-logo">PB</div>
+//           <div className="insurance-selection-slogan">HAR FAMILY HOGI INSURED</div>
+//         </div>
+//         <button className="insurance-selection-help-button">Help</button>
 //       </header>
 
-//       <div className="progress-bar">
-//         <div className="progress" style={{ width: '0%' }}></div>
+//       <div className="insurance-selection-progress-bar">
+//         <div className="insurance-selection-progress" style={{ width: '0%' }}></div>
 //       </div>
 
-//       <main>
-//         <h1>
-//           Find top plans for you with up to <span className="highlight">25% discount</span>
-//         </h1>
+//       <h1 className="insurance-selection-headline">
+//         Find top plans for you with up to <span className="insurance-selection-discount">25% discount™</span>
+//       </h1>
 
-//         <div className="gender-toggle">
-//           <button className="active">Male</button>
-//           <button>Female</button>
+//       <div className="insurance-selection-gender">
+//         <div className="insurance-selection-gender-options">
+//           <button
+//             className={`insurance-selection-gender-button ${selectedGender === 'male' ? 'insurance-selection-gender-selected' : ''}`}
+//             onClick={() => handleGenderSelect('male')}
+//           >
+//             Male
+//           </button>
+//           <button
+//             className={`insurance-selection-gender-button ${selectedGender === 'female' ? 'insurance-selection-gender-selected' : ''}`}
+//             onClick={() => handleGenderSelect('female')}
+//           >
+//             Female
+//           </button>
 //         </div>
+//       </div>
 
-//         <h3>Select members you want to insure</h3>
-
-//         <div className="members-grid">
-//           <div className="member-card selected">
-//             <div className="avatar"></div>
-//             <div>Self</div>
-//           </div>
-//           <div className="member-card">
-//             <div className="avatar"></div>
-//             <div>Wife</div>
-//           </div>
-//           <div className="member-card selected">
-//             <div className="avatar"></div>
-//             <div>Son</div>
-//             <div className="quantity-control">
-//               <button>-</button>
-//               <span>1</span>
-//               <button>+</button>
+//       <div className="insurance-selection-members">
+//         <h3 className="insurance-selection-section-title">Select members you want to insure</h3>
+//         <div className="insurance-selection-members-grid">
+//           {(showAllMembers ? allMembers : basicMembers).map((member) => (
+//             <div
+//               key={member}
+//               className={`insurance-selection-member-card ${selectedMembers.includes(member) ? 'insurance-selection-member-selected' : ''}`}
+//               onClick={() => handleMemberSelect(member)}
+//             >
+//               <div className="insurance-selection-member-avatar">{getAvatar(member)}</div>
+//               <div className="insurance-selection-member-name">{member}</div>
+//               {(member === 'Son' || member === 'Daughter') && (
+//                 <div className="insurance-selection-child-counter">
+//                   <button 
+//                     className="insurance-selection-counter-button" 
+//                     onClick={(e) => {
+//                       e.stopPropagation();
+//                       handleChildCountChange(member.toLowerCase(), false);
+//                     }}
+//                   >
+//                     −
+//                   </button>
+//                   <span>{childrenCount[member.toLowerCase()]}</span>
+//                   <button 
+//                     className="insurance-selection-counter-button" 
+//                     onClick={(e) => {
+//                       e.stopPropagation();
+//                       handleChildCountChange(member.toLowerCase(), true);
+//                     }}
+//                   >
+//                     +
+//                   </button>
+//                 </div>
+//               )}
 //             </div>
-//           </div>
-//           <div className="member-card">
-//             <div className="avatar"></div>
-//             <div>Daughter</div>
-//           </div>
-//           <div className="member-card">
-//             <div className="avatar"></div>
-//             <div>Father</div>
-//           </div>
-//           <div className="member-card">
-//             <div className="avatar"></div>
-//             <div>Mother</div>
-//           </div>
+//           ))}
 //         </div>
+//       </div>
 
-//         <div className="more-members">More members ⌄</div>
+//       <div className="insurance-selection-more-members">
+//         <button 
+//           className="insurance-selection-more-members-button"
+//           onClick={toggleShowAllMembers}
+//         >
+//           {showAllMembers ? 'Show less ▲' : 'More members ▼'}
+//         </button>
+//       </div>
 
-//         <button className="continue-btn">Continue ›</button>
+//       <button className="insurance-selection-continue-button">Continue ▼</button>
 
-//         <div className="footer-text">
-//           By clicking on "Continue", you agree to our{' '}
-//           <a href="#">Privacy Policy</a>,{' '}
-//           <a href="#">Terms of Use</a> &{' '}
-//           <a href="#">*Disclaimer</a>
+//       <footer className="insurance-selection-footer">
+//         By clicking on "Continue", you agree to our Privacy Policy, Terms of Use & "Disclaimer"
+//       </footer>
+
+//       <div className="insurance-selection-stats">
+//         <div className="insurance-selection-stat">
+//           <div className="insurance-selection-stat-number">9.7 crore</div>
+//           <div className="insurance-selection-stat-label">Registered Consumers</div>
 //         </div>
-//       </main>
+//         <div className="insurance-selection-stat">
+//           <div className="insurance-selection-stat-number">51</div>
+//           <div className="insurance-selection-stat-label">Insurance Partners</div>
+//         </div>
+//         <div className="insurance-selection-stat">
+//           <div className="insurance-selection-stat-number">4.9 crore</div>
+//           <div className="insurance-selection-stat-label">Policies Sold</div>
+//         </div>
+//       </div>
 //     </div>
 //   );
 // };
@@ -209,16 +164,38 @@
 // export default InsuranceSelection;
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import './InsuranceSelection.css';
 
 const InsuranceSelection = () => {
+  // Member selection state
+  const navigate = useNavigate();
+
   const [selectedGender, setSelectedGender] = useState(null);
   const [selectedMembers, setSelectedMembers] = useState([]);
+  const [showAllMembers, setShowAllMembers] = useState(false);
   const [childrenCount, setChildrenCount] = useState({
     son: 1,
     daughter: 1
   });
 
+  // Age selection state
+  const [showAgeSelection, setShowAgeSelection] = useState(false);
+  const [memberAges, setMemberAges] = useState({
+    Self: 28,
+    Wife: 30,
+    Son: 5,
+    Daughter: 5,
+    Father: 60,
+    Mother: 58,
+    Grandfather: 75,
+    Grandmother: 72,
+    'Father-in-law': 65,
+    'Mother-in-law': 63
+  });
+
+  // Member selection handlers
   const handleGenderSelect = (gender) => {
     setSelectedGender(gender);
   };
@@ -238,6 +215,42 @@ const InsuranceSelection = () => {
     }));
   };
 
+  const toggleShowAllMembers = () => {
+    setShowAllMembers(!showAllMembers);
+  };
+
+  // Age selection handlers
+  const handleAgeChange = (member, age) => {
+    setMemberAges(prev => ({
+      ...prev,
+      [member]: parseInt(age) || 0
+    }));
+  };
+
+  const handleContinueFromMemberSelection = () => {
+    if (selectedMembers.length === 0) {
+      alert('Please select at least one member to insure');
+      return;
+    }
+    setShowAgeSelection(true);
+  };
+
+  const handleContinueFromAgeSelection = () => {
+    // Here you would typically navigate to the next page or submit the data
+    console.log('Selected members with ages:', {
+      members: selectedMembers,
+      ages: memberAges,
+      gender: selectedGender
+    });
+    navigate('/select-city');
+    // For demo purposes, we'll just go back to member selection
+    setShowAgeSelection(false);
+  };
+
+  const handleBackFromAgeSelection = () => {
+    setShowAgeSelection(false);
+  };
+
   const getAvatar = (member) => {
     const avatars = {
       self: '👤',
@@ -245,95 +258,196 @@ const InsuranceSelection = () => {
       son: '👦',
       daughter: '👧',
       father: '👴',
-      mother: '👵'
+      mother: '👵',
+      grandfather: '👴',
+      grandmother: '👵',
+      'father-in-law': '👴',
+      'mother-in-law': '👵'
     };
     return avatars[member.toLowerCase()] || '👤';
   };
 
+  const basicMembers = ['Self', 'Wife', 'Son', 'Daughter', 'Father', 'Mother'];
+  const additionalMembers = ['Grandfather', 'Grandmother', 'Father-in-law', 'Mother-in-law'];
+  const allMembers = [...basicMembers, ...additionalMembers];
+
   return (
     <div className="insurance-selection">
-      <header className="insurance-selection-header">
-        <div className="insurance-selection-logo-container">
-          <div className="insurance-selection-logo">PB</div>
-          <div className="insurance-selection-slogan">HAR FAMILY HOGI INSURED</div>
-        </div>
-        <button className="insurance-selection-help-button">Help</button>
-      </header>
-
-      <div className="insurance-selection-progress-bar">
-        <div className="insurance-selection-progress" style={{ width: '0%' }}></div>
-      </div>
-
-      <h1 className="insurance-selection-headline">
-        Find top plans for you with up to <span className="insurance-selection-discount">25% discount</span>
-      </h1>
-
-      <div className="insurance-selection-gender">
-        <h3 className="insurance-selection-section-title">Gender</h3>
-        <div className="insurance-selection-gender-options">
-          <button
-            className={`insurance-selection-gender-button ${selectedGender === 'male' ? 'insurance-selection-gender-selected' : ''}`}
-            onClick={() => handleGenderSelect('male')}
-          >
-            Male
-          </button>
-          <button
-            className={`insurance-selection-gender-button ${selectedGender === 'female' ? 'insurance-selection-gender-selected' : ''}`}
-            onClick={() => handleGenderSelect('female')}
-          >
-            Female
-          </button>
-        </div>
-      </div>
-
-      <div className="insurance-selection-members">
-        <h3 className="insurance-selection-section-title">Select members you want to insure</h3>
-        <div className="insurance-selection-members-grid">
-          {['Self', 'Wife', 'Son', 'Daughter', 'Father', 'Mother'].map((member) => (
-            <div
-              key={member}
-              className={`insurance-selection-member-card ${selectedMembers.includes(member) ? 'insurance-selection-member-selected' : ''}`}
-              onClick={() => handleMemberSelect(member)}
+      {showAgeSelection ? (
+        /* Age Selection Screen */
+        <div className="insurance-age-selection">
+          <header className="insurance-age-selection-header">
+            <button 
+              className="insurance-age-selection-back-button"
+              onClick={handleBackFromAgeSelection}
             >
-              <div className="insurance-selection-member-avatar">{getAvatar(member)}</div>
-              <div className="insurance-selection-member-name">{member}</div>
-              {(member === 'Son' || member === 'Daughter') && (
-                <div className="insurance-selection-child-counter">
-                  <button 
-                    className="insurance-selection-counter-button" 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleChildCountChange(member.toLowerCase(), false);
-                    }}
-                  >
-                    −
-                  </button>
-                  <span>{childrenCount[member.toLowerCase()]}</span>
-                  <button 
-                    className="insurance-selection-counter-button" 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleChildCountChange(member.toLowerCase(), true);
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-              )}
+              <FiArrowLeft size={20} />
+            </button>
+            <div className="insurance-age-selection-progress-bar">
+              <div className="insurance-age-selection-progress" style={{ width: '25%' }}></div>
+              <span className="insurance-age-selection-progress-text">25% complete</span>
+            </div>
+          </header>
+
+          <h1 className="insurance-age-selection-title">Select age of covered member(s)</h1>
+
+          {selectedMembers.map(member => (
+            <div key={member} className="insurance-age-selection-input-group">
+              <label className="insurance-age-selection-label">
+                {member === 'Son' || member === 'Daughter' 
+                  ? `${member}'s age (${childrenCount[member.toLowerCase()]} ${childrenCount[member.toLowerCase()] > 1 ? 'children' : 'child'})`
+                  : `${member}'s age`}
+              </label>
+              <select
+                value={memberAges[member]}
+                onChange={(e) => handleAgeChange(member, e.target.value)}
+                className="insurance-age-selection-select"
+              >
+                {Array.from({ length: 100 }, (_, i) => (
+                  <option key={i} value={i}>{i} yr</option>
+                ))}
+              </select>
             </div>
           ))}
+
+          <div className="insurance-age-selection-side-info">
+            <h3>Get best pricing</h3>
+            <p>This will help us in calculating the premium & discounts for your family member(s)</p>
+          </div>
+
+          <button 
+            className="insurance-selection-continue-button"
+            onClick={handleContinueFromAgeSelection}
+          >
+            Continue 
+          </button>
+
+          <div className="insurance-selection-stats">
+            <div className="insurance-selection-stat">
+              <div className="insurance-selection-stat-number">9.7 crore</div>
+              <div className="insurance-selection-stat-label">Registered Consumers</div>
+            </div>
+            <div className="insurance-selection-stat">
+              <div className="insurance-selection-stat-number">51</div>
+              <div className="insurance-selection-stat-label">Insurance Partners</div>
+            </div>
+            <div className="insurance-selection-stat">
+              <div className="insurance-selection-stat-number">4.9 crore</div>
+              <div className="insurance-selection-stat-label">Policies Sold</div>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        /* Member Selection Screen */
+        <>
+          <header className="insurance-selection-header">
+            <div className="insurance-selection-logo-container">
+              <div className="insurance-selection-logo">PB</div>
+              <div className="insurance-selection-slogan">HAR FAMILY HOGI INSURED</div>
+            </div>
+            <button className="insurance-selection-help-button">Help</button>
+          </header>
 
-      <div className="insurance-selection-more-members">
-        <button className="insurance-selection-more-members-button">More members ➤</button>
-      </div>
+          <div className="insurance-selection-progress-bar">
+            <div className="insurance-selection-progress" style={{ width: '0%' }}></div>
+          </div>
 
-      <button className="insurance-selection-continue-button">Continue</button>
+          <h1 className="insurance-selection-headline">
+            Find top plans for you with up to <span className="insurance-selection-discount">25% discount™</span>
+          </h1>
 
-      <footer className="insurance-selection-footer">
-        By clicking on "Continue", you agree to our Privacy Policy, Terms of Use & Disclaimer
-      </footer>
+          <div className="insurance-selection-gender">
+            <div className="insurance-selection-gender-options">
+              <button
+                className={`insurance-selection-gender-button ${selectedGender === 'male' ? 'insurance-selection-gender-selected' : ''}`}
+                onClick={() => handleGenderSelect('male')}
+              >
+                Male
+              </button>
+              <button
+                className={`insurance-selection-gender-button ${selectedGender === 'female' ? 'insurance-selection-gender-selected' : ''}`}
+                onClick={() => handleGenderSelect('female')}
+              >
+                Female
+              </button>
+            </div>
+          </div>
+
+          <div className="insurance-selection-members">
+            <h3 className="insurance-selection-section-title">Select members you want to insure</h3>
+            <div className="insurance-selection-members-grid">
+              {(showAllMembers ? allMembers : basicMembers).map((member) => (
+                <div
+                  key={member}
+                  className={`insurance-selection-member-card ${selectedMembers.includes(member) ? 'insurance-selection-member-selected' : ''}`}
+                  onClick={() => handleMemberSelect(member)}
+                >
+                  <div className="insurance-selection-member-avatar">{getAvatar(member)}</div>
+                  <div className="insurance-selection-member-name">{member}</div>
+                  {(member === 'Son' || member === 'Daughter') && (
+                    <div className="insurance-selection-child-counter">
+                      <button 
+                        className="insurance-selection-counter-button" 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleChildCountChange(member.toLowerCase(), false);
+                        }}
+                      >
+                        −
+                      </button>
+                      <span>{childrenCount[member.toLowerCase()]}</span>
+                      <button 
+                        className="insurance-selection-counter-button" 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleChildCountChange(member.toLowerCase(), true);
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="insurance-selection-more-members">
+            <button 
+              className="insurance-selection-more-members-button"
+              onClick={toggleShowAllMembers}
+            >
+              {showAllMembers ? 'Show less ▲' : 'More members ▼'}
+            </button>
+          </div>
+
+          <button 
+            className="insurance-selection-continue-button"
+            onClick={handleContinueFromMemberSelection}
+          >
+            Continue ▼
+          </button>
+
+          <footer className="insurance-selection-footer">
+            By clicking on "Continue", you agree to our Privacy Policy, Terms of Use & "Disclaimer"
+          </footer>
+
+          <div className="insurance-selection-stats">
+            <div className="insurance-selection-stat">
+              <div className="insurance-selection-stat-number">9.7 crore</div>
+              <div className="insurance-selection-stat-label">Registered Consumers</div>
+            </div>
+            <div className="insurance-selection-stat">
+              <div className="insurance-selection-stat-number">51</div>
+              <div className="insurance-selection-stat-label">Insurance Partners</div>
+            </div>
+            <div className="insurance-selection-stat">
+              <div className="insurance-selection-stat-number">4.9 crore</div>
+              <div className="insurance-selection-stat-label">Policies Sold</div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

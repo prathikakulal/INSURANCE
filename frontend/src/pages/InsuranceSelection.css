@@ -1,170 +1,19 @@
-/* .insurance-selection-page {
-  font-family: 'Segoe UI', sans-serif;
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.insurance-selection-page header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.insurance-selection-page .logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #2c3e50;
-}
-.insurance-selection-page .logo span {
-  color: #3498db;
-}
-
-.insurance-selection-page .tagline {
-  font-size: 12px;
-  color: #555;
-  position: absolute;
-  top: 35px;
-  left: 0;
-}
-
-.insurance-selection-page .help-btn {
-  background: #e8fff0;
-  color: #00c47c;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.insurance-selection-page .progress-bar {
-  background: #e0f8e8;
-  height: 8px;
-  margin: 20px 0;
-  border-radius: 4px;
-}
-.insurance-selection-page .progress {
-  background: #00c47c;
-  height: 100%;
-  border-radius: 4px;
-}
-
-.insurance-selection-page main h1 {
-  text-align: center;
-  font-size: 24px;
-  margin: 20px 0;
-}
-.insurance-selection-page .highlight {
-  color: #d63384;
-}
-
-.insurance-selection-page .gender-toggle {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.insurance-selection-page .gender-toggle button {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  background: #f7f7f7;
-  cursor: pointer;
-  margin: 0 5px;
-  border-radius: 6px;
-}
-.insurance-selection-page .gender-toggle .active {
-  background: #4caf50;
-  color: white;
-  border-color: #4caf50;
-}
-
-.insurance-selection-page .members-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.insurance-selection-page .member-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  width: 120px;
-  text-align: center;
-  padding: 15px;
-  cursor: pointer;
-  background: #fff;
-}
-.insurance-selection-page .member-card .avatar {
-  height: 50px;
-  background: #f0f0f0;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-.insurance-selection-page .member-card.selected {
-  border: 2px solid #4caf50;
-  background: #eafbee;
-}
-.insurance-selection-page .quantity-control {
-  margin-top: 10px;
-}
-.insurance-selection-page .quantity-control button {
-  background: #fff;
-  border: 1px solid #4caf50;
-  padding: 3px 8px;
-  margin: 0 5px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #4caf50;
-}
-
-.insurance-selection-page .more-members {
-  text-align: center;
-  color: #2d8f55;
-  text-decoration: underline;
-  cursor: pointer;
-  margin-bottom: 30px;
-}
-
-.insurance-selection-page .continue-btn {
-  background: #f25d35;
-  color: white;
-  border: none;
-  width: 100%;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.insurance-selection-page .footer-text {
-  margin-top: 20px;
-  font-size: 12px;
-  text-align: center;
-  color: #555;
-}
-.insurance-selection-page .footer-text a {
-  color: #3498db;
-  text-decoration: none;
-} */
-
-
-
 
 .insurance-selection {
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
   min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .insurance-selection-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .insurance-selection-logo-container {
@@ -175,7 +24,7 @@
 .insurance-selection-logo {
   width: 40px;
   height: 40px;
-  background-color: #007bff;
+  background-color: #00c47c;
   color: white;
   display: flex;
   justify-content: center;
@@ -183,39 +32,44 @@
   border-radius: 8px;
   font-weight: bold;
   margin-right: 10px;
+  font-size: 18px;
 }
 
 .insurance-selection-slogan {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .insurance-selection-help-button {
   padding: 8px 16px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
+  background-color: #e8fff0;
+  color: #00c47c;
+  border: none;
   border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: bold;
   transition: all 0.2s;
 }
 
 .insurance-selection-help-button:hover {
-  background-color: #e9ecef;
+  background-color: #d5f5e3;
 }
 
 .insurance-selection-progress-bar {
   width: 100%;
   height: 6px;
-  background-color: #e9ecef;
+  background-color: #e0f8e8;
   border-radius: 3px;
   margin-bottom: 25px;
 }
 
 .insurance-selection-progress {
   height: 100%;
-  background-color: #007bff;
+  background-color: #00c47c;
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -225,16 +79,13 @@
   margin-bottom: 25px;
   text-align: center;
   color: #333;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .insurance-selection-discount {
-  color: #ff4081;
+  color: #d63384;
   font-weight: bold;
-}
-
-.insurance-selection-section-title {
-  margin-bottom: 10px;
-  color: #555;
 }
 
 .insurance-selection-gender {
@@ -243,17 +94,18 @@
 
 .insurance-selection-gender-options {
   display: flex;
-  gap: 10px;
+  gap: 15px;
+  justify-content: center;
 }
 
 .insurance-selection-gender-button {
-  flex: 1;
-  padding: 12px;
-  background-color: #f8f9fa;
+  padding: 12px 25px;
+  background-color: #f7f7f7;
   border: 1px solid #ddd;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 500;
   transition: all 0.2s;
 }
 
@@ -262,48 +114,68 @@
 }
 
 .insurance-selection-gender-selected {
-  background-color: #007bff;
+  background-color: #4caf50;
   color: white;
-  border-color: #007bff;
+  border-color: #4caf50;
 }
 
 .insurance-selection-members {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+
+.insurance-selection-section-title {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .insurance-selection-members-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 15px;
 }
 
 .insurance-selection-member-card {
-  padding: 15px;
-  border: 1px solid #ddd;
+  padding: 12px 8px;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
   transition: all 0.2s;
-  background-color: #f8f9fa;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .insurance-selection-member-card:hover {
-  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .insurance-selection-member-selected {
-  background-color: #e6f7ee;
-  border-color: #28a745;
+  background-color: #eafbee;
+  border-color: #4caf50;
+  box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
 }
 
 .insurance-selection-member-avatar {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 8px;
 }
 
 .insurance-selection-member-name {
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 5px;
+  color: #333;
+  font-size: 14px;
 }
 
 .insurance-selection-child-counter {
@@ -315,9 +187,9 @@
 }
 
 .insurance-selection-counter-button {
-  width: 25px;
-  height: 25px;
-  border: 1px solid #ddd;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #4caf50;
   background-color: white;
   border-radius: 50%;
   cursor: pointer;
@@ -325,47 +197,62 @@
   justify-content: center;
   align-items: center;
   font-size: 12px;
+  color: #4caf50;
   transition: all 0.2s;
 }
 
 .insurance-selection-counter-button:hover {
-  background-color: #f1f1f1;
+  background-color: #4caf50;
+  color: white;
 }
 
 .insurance-selection-more-members {
-  margin: 20px 0;
+  margin: 15px 0;
   text-align: center;
 }
 
 .insurance-selection-more-members-button {
   background: none;
   border: none;
-  color: #007bff;
+  color: #2d8f55;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 500;
   padding: 5px;
+  text-decoration: underline;
 }
 
 .insurance-selection-more-members-button:hover {
-  text-decoration: underline;
+  color: #1e6b3f;
 }
 
 .insurance-selection-continue-button {
   width: 100%;
   padding: 15px;
-  background-color: #ff6b35;
+  background-color: #f25d35;
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
   transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(242, 93, 53, 0.3);
+  position: relative;
+}
+
+.insurance-selection-continue-button::after {
+  content: '▼';
+  position: absolute;
+  right: 15px;
+  font-size: 14px;
 }
 
 .insurance-selection-continue-button:hover {
-  background-color: #e55a25;
+  background-color: #e0552e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(242, 93, 53, 0.3);
 }
 
 .insurance-selection-footer {
@@ -374,14 +261,135 @@
   color: #777;
   text-align: center;
   padding: 0 10px;
+  line-height: 1.5;
+}
+
+.insurance-selection-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.insurance-selection-stat {
+  text-align: center;
+  flex: 1;
+}
+
+.insurance-selection-stat-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.insurance-selection-stat-label {
+  font-size: 12px;
+  color: #777;
 }
 
 @media (max-width: 480px) {
+  .insurance-selection {
+    padding: 15px;
+  }
+  
   .insurance-selection-members-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .insurance-selection-headline {
     font-size: 20px;
   }
+  
+  .insurance-selection-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+
+
+.insurance-age-selection {
+  padding: 20px;
+}
+
+.insurance-age-selection-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.insurance-age-selection-back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #666;
+}
+
+.insurance-age-selection-progress-bar {
+  flex: 1;
+}
+
+.insurance-age-selection-progress {
+  height: 5px;
+  background-color: #f68b1e;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.insurance-age-selection-progress-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.insurance-age-selection-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.insurance-age-selection-input-group {
+  margin-bottom: 25px;
+}
+
+.insurance-age-selection-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.insurance-age-selection-select {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.insurance-age-selection-side-info {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.insurance-age-selection-side-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.insurance-age-selection-side-info p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
 }
