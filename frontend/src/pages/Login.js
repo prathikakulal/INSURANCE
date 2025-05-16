@@ -7,7 +7,7 @@ import AuthABI from '../contracts/AuthContract.json'; // ABI as array
 import './Login.css';
 import { generateHash } from '../utils/hash';
 
-const CONTRACT_ADDRESS = '0xc0B95A22Efdd9087484397040E8cE9599320c371'; // ⬅️ Replace this
+const CONTRACT_ADDRESS = '0xc63E962e210B9F2e3a23cE22DdB603aB24d3fF46'; // ⬅️ Replace this
 
 function Login() {
   const [activeTab, setActiveTab] = useState('login');
